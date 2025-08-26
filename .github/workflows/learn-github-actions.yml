@@ -3,9 +3,9 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 
 on:
   push:
-    branches: [master, staging, production]
+    branches: [master, development, staging, production]
   pull_request:
-    branches: [master, staging, production]
+    branches: [master, development, staging, production]
 
 jobs:
   check-bats-version:
