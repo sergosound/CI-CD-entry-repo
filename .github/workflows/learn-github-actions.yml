@@ -40,6 +40,27 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+  deploy-development:
+    name: Deploy to Development
+    needs: [lint, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/development' && github.event_name == 'push'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Build for development
+        run: npm run build:development
+      - name: Deploy to development
+        run: |
+          echo "🚀 Deploying to development environment"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
   deploy-staging:
     name: Deploy to Staging
     needs: [lint, build]
