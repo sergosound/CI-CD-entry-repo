@@ -12,6 +12,11 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+// New route returning a plain string
+app.get('/api/console', (req, res) => {
+  res.type('text/plain').send('word');
+});
+
 // Initialize serverless wrapper (no export; useful if imported elsewhere)
 const _handler = serverless(app);
 
