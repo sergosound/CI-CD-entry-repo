@@ -27,4 +27,37 @@ export default defineConfig([
       "react/jsx-uses-react": "off",
     },
   },
+  // Server files specific rules
+  {
+    files: ["server/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.es2022,
+      },
+      ecmaVersion: 2022,
+      sourceType: "module",
+    },
+    rules: {
+      "no-undef": "error",
+      "no-unused-vars": "error",
+    },
+  },
+  // Config files specific rules
+  {
+    files: ["*.config.js", "*.config.mjs", "*.config.cjs", "vite.config.js", "eslint.config.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.es2022,
+      },
+      ecmaVersion: 2022,
+      sourceType: "module",
+    },
+    rules: {
+      "no-undef": "error",
+      "no-unused-vars": "error",
+      "no-implicit-globals": "error",
+    },
+  },
 ]);

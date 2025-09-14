@@ -12,10 +12,12 @@
     "preview": "vite preview",
     "server": "node server/index.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "check": "npm run lint"
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",
+    "@types/node": "^24.3.3",
     "@vitejs/plugin-react": "5.0.1",
     "eslint": "^9.34.0",
     "eslint-plugin-react": "^7.37.5",

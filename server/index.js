@@ -1,8 +1,11 @@
 import express from 'express';
-import serverless from 'serverless-http';
+// import serverless from 'serverless-http';
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Disable etags for 304 avoidance on dynamic responses
+app.set('etag', false);
 
 // Example route matching your snippet
 app.get('/api/ping', (req, res) => res.json({ ok: true }));
@@ -14,11 +17,12 @@ app.get('/api/health', (req, res) => {
 
 // New route returning a plain string
 app.get('/api/console', (req, res) => {
+  res.set('Cache-Control', 'no-store');
   res.type('text/plain').send('word');
 });
 
 // Initialize serverless wrapper (no export; useful if imported elsewhere)
-const _handler = serverless(app);
+// const _handler = serverless(app);
 
 // Start HTTP server for local/dev usage
 app.listen(port, () => {
