@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { products, cart } from '../../app/store';
+import Cart from '@features/Cart';
+import { products } from '../../app/store';
 import styles from './Home.module.css';
 
 export default function Home() {
   const [addedToCart, setAddedToCart] = useState({});
 
   const handleAddToCart = (product) => {
-    cart.addItem(product);
+    Cart.addItem(product);
     setAddedToCart({ ...addedToCart, [product.id]: true });
     setTimeout(() => {
       setAddedToCart({ ...addedToCart, [product.id]: false });

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { products, cart } from '../../app/store';
+import Cart from '@features/Cart';
+import { products } from '../../app/store';
 import styles from './Product.module.css';
 
 export default function Product() {
@@ -17,7 +18,7 @@ export default function Product() {
   const handleAddToCart = () => {
     if (product) {
       for (let i = 0; i < quantity; i++) {
-        cart.addItem(product);
+        Cart.addItem(product);
       }
       setAddedToCart(true);
       setTimeout(() => setAddedToCart(false), 2000);
@@ -92,8 +93,8 @@ export default function Product() {
               {addedToCart ? 'Added to Cart!' : 'Add to Cart'}
             </button>
             
-            <Link to="/cart" className={styles['view-cart-btn']}>
-              View Cart
+            <Link to="/basket" className={styles['view-cart-btn']}>
+              View cart
             </Link>
           </div>
         </div>

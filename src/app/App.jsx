@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from '@pages/Home';
+import Cart from '@features/Cart';
 import About from '@pages/About';
-import Cart from '@pages/Cart';
-import Product from '@pages/Product';
+import Basket from '@pages/Basket';
 import Checkout from '@pages/Checkout';
-import { cart } from './store';
+import Home from '@pages/Home';
+import Product from '@pages/Product';
 import styles from './App.module.css';
 
 function Counter() {
@@ -48,11 +48,11 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    setCartItemCount(cart.getItemCount());
+    setCartItemCount(Cart.getItemCount());
     
     // Listen for cart changes (simple polling for demo)
     const interval = setInterval(() => {
-      setCartItemCount(cart.getItemCount());
+      setCartItemCount(Cart.getItemCount());
     }, 1000);
     
     return () => clearInterval(interval);
@@ -81,9 +81,9 @@ export default function App() {
             </div>
             
             <div className={styles['cart-container']}>
-              <Link to="/cart" className={styles['cart-button']}>
+              <Link to="/basket" className={styles['cart-button']}>
                 <span className={styles['cart-icon']}>🛒</span>
-                <span>Cart</span>
+                <span>Basket</span>
                 <span className={styles['cart-count']}>{cartItemCount}</span>
               </Link>
               
@@ -114,7 +114,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/basket" element={<Basket />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
