@@ -40,30 +40,30 @@ export default function Product() {
           <img src={product.image} alt={product.name} />
         </div>
         <div className={styles['product-details']}>
-          <h1 className="product-name">{product.name}</h1>
-          <div className="product-rating">
-            <span className="stars">★</span>
-            <span className="rating-value">{product.rating}</span>
-            <span className="rating-text">({product.rating}/5)</span>
+          <h1 className={styles['product-name']}>{product.name}</h1>
+          <div className={styles['product-rating']}>
+            <span className={styles.stars}>★</span>
+            <span className={styles['rating-value']}>{product.rating}</span>
+            <span className={styles['rating-text']}>({product.rating}/5)</span>
           </div>
-          <div className="product-price">${product.price.toFixed(2)}</div>
-          <div className="product-category">
+          <div className={styles['product-price']}>${product.price.toFixed(2)}</div>
+          <div className={styles['product-category']}>
             <strong>Category:</strong> {product.category}
           </div>
-          <div className="product-stock">
-            <span className={`stock-status ${product.inStock ? 'in-stock' : 'out-of-stock'}`}>
+          <div className={styles['product-stock']}>
+            <span className={`${styles['stock-status']} ${product.inStock ? styles['in-stock'] : styles['out-of-stock']}`}>
               {product.inStock ? 'In Stock' : 'Out of Stock'}
             </span>
           </div>
-          <p className="product-description">{product.description}</p>
+          <p className={styles['product-description']}>{product.description}</p>
           
-          <div className="product-actions">
-            <div className="quantity-selector">
+          <div className={styles['product-actions']}>
+            <div className={styles['quantity-selector']}>
               <label htmlFor="quantity">Quantity:</label>
-              <div className="quantity-controls">
+              <div className={styles['quantity-controls']}>
                 <button 
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="quantity-btn"
+                  className={styles['quantity-btn']}
                 >
                   -
                 </button>
@@ -73,11 +73,11 @@ export default function Product() {
                   min="1"
                   value={quantity}
                   onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="quantity-input"
+                  className={styles['quantity-input']}
                 />
                 <button 
                   onClick={() => setQuantity(quantity + 1)}
-                  className="quantity-btn"
+                  className={styles['quantity-btn']}
                 >
                   +
                 </button>
@@ -87,20 +87,20 @@ export default function Product() {
             <button 
               onClick={handleAddToCart}
               disabled={!product.inStock}
-              className={`add-to-cart-btn ${addedToCart ? 'added' : ''}`}
+              className={`${styles['add-to-cart-btn']} ${addedToCart ? styles.added : ''}`}
             >
               {addedToCart ? 'Added to Cart!' : 'Add to Cart'}
             </button>
             
-            <Link to="/cart" className="view-cart-btn">
+            <Link to="/cart" className={styles['view-cart-btn']}>
               View Cart
             </Link>
           </div>
         </div>
       </div>
       
-      <div className="product-navigation">
-        <Link to="/" className="back-btn">← Back to Products</Link>
+      <div className={styles['product-navigation']}>
+        <Link to="/" className={styles['back-btn']}>← Back to Products</Link>
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ import Checkout from '@pages/Checkout';
 import { cart } from './store';
 import styles from './App.module.css';
 
-
 function Counter() {
   const [counter, setCounter] = useState(0);
 
